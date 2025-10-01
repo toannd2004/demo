@@ -1,0 +1,82 @@
+<html lang="vi"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiệp Chúc Mừng</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Ngăn cuộn trang */
+        }
+
+        .card-container {
+            position: relative; /* Vị trí gốc cho các phần tử con */
+            width: 100vw;
+            height: 100vh;
+            background-color: #000; /* Nền đen phòng khi video chưa tải kịp */
+        }
+
+        #background-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 1;
+        }
+
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2; /* Nằm trên video */
+            
+            color: white;
+            text-align: center;
+            font-family: 'Garamond', serif; /* Font chữ kiểu cách */
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8); /* Đổ bóng để chữ dễ đọc */
+        }
+
+        .greeting {
+            font-size: 3vw; /* Cỡ chữ co giãn theo màn hình */
+            font-weight: 300;
+        }
+
+        .customer-name {
+            font-size: 6vw;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <video autoplay="" muted="" loop="" playsinline="" id="background-video">
+            <source src="https://videos.pexels.com/video-files/853874/853874-hd_1920_1080_25fps.mp4" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ video.
+        </video>
+
+        <div class="text-overlay">
+            <div class="greeting">Chúc Mừng Năm Mới</div>
+            <div class="customer-name" id="name-placeholder">Toan Nguyen</div>
+        </div>
+    </div>
+
+    <script>
+        // Lấy tên từ URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const customerName = urlParams.get('ten'); // Lấy giá trị của tham số 'ten'
+
+        if (customerName) {
+            // Nếu có tên trong URL, thay thế vào placeholder
+            document.getElementById('name-placeholder').textContent = customerName;
+        }
+    </script>
+
+
+
+</body></html>
